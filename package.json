@@ -1,0 +1,29 @@
+{
+  "name": "repoai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "serve": "nodemon dist/src/server.js",
+    "dev": "concurrently \"npm run watch\" \"npm run serve\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1",
+    "p-limit": "^7.3.0",
+    "tree-sitter": "^0.25.0",
+    "tree-sitter-javascript": "^0.25.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}

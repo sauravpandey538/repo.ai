@@ -9,15 +9,15 @@ export function buildImportMap(files: any[]) {
     for (const imp of file.imports || []) {
       const baseDir = path.dirname(filePath);
 
+      let resolvedBase = path.join(baseDir, imp.source);
+
+      // 🔥 handle folder imports → index.ts
+      if (!resolvedBase.endsWith(".ts")) {
+        resolvedBase += ".ts";
+      }
+
       for (const name of imp.specifiers) {
-        let resolvedPath = path.join(baseDir, imp.source);
-
-        // 🔥 add extension if missing
-        if (!resolvedPath.endsWith(".ts")) {
-          resolvedPath += ".ts";
-        }
-
-        map.set(name, resolvedPath);
+        map.set(name, resolvedBase);
       }
     }
   }

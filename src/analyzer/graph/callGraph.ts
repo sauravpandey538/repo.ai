@@ -1,4 +1,6 @@
-export function buildCallGraph(files: any[], importMap: Map<string, string>) {
+import { resolveCall } from "./resolver.js";
+
+export function buildCallGraph(files: any[], symbolTable: Map<string, string>) {
   const graph = new Map<string, Set<string>>();
 
   for (const file of files) {
@@ -12,15 +14,11 @@ export function buildCallGraph(files: any[], importMap: Map<string, string>) {
       }
 
       for (const call of fn.calls || []) {
-        let toKey = call;
+        const resolved = resolveCall(call, file.file, symbolTable);
+        if (!resolved) continue; // 🚨 skip junk
+        if (fromKey === resolved) continue;
 
-        // 🔥 resolve cross-file
-        if (importMap.has(call)) {
-          const targetFile = importMap.get(call);
-          toKey = `${call}@${targetFile}`;
-        }
-
-        graph.get(fromKey)!.add(toKey);
+        graph.get(fromKey)!.add(resolved);
       }
     }
   }

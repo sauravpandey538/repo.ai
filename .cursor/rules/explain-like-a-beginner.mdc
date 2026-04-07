@@ -1,0 +1,46 @@
+---
+description: Explain repo.ai concepts and changes in beginner-friendly language
+alwaysApply: true
+---
+
+# Explain Like I Am New
+
+The goal of this rule is to ensure all explanations, plans, and code reviews are written for someone who is **new to building tools like repo.ai** and similar AI developer products.
+
+## Explanation Style
+
+- Use **simple, clear language** first. If you must use a technical term (e.g. "embedding", "call graph"), **define it in plain words** the first time.
+- Prefer **short sentences and small steps** over dense paragraphs.
+- When describing a concept, try to answer:
+  - What is it?
+  - Why do we need it here?
+  - How does it connect to files or code in this repo?
+- When there are multiple options, briefly compare them and say **which one you recommend and why**.
+
+## Step-by-step Guidance
+
+- Break work into **ordered steps** (1, 2, 3…) whenever it helps understanding.
+- For each step, explain:
+  - What to do.
+  - Where to do it (file name / folder).
+  - What result to expect (e.g. a new endpoint, a passing command).
+- Avoid assuming prior knowledge about:
+  - AI agents, embeddings, vector databases.
+  - Call graphs, impact analysis, or static analysis.
+
+## Code and Examples
+
+- When suggesting changes, include **concrete code examples** or patches, not only high-level ideas.
+- Connect examples to this project by mentioning the **actual modules or folders** (e.g. `src/analyzer`, `src/parser`, `agent`, `indexer`, `retriever`) where the change would live.
+- If a change spans multiple files, mention the **order** in which to edit them.
+
+## Questions and Assumptions
+
+- If the requirements are unclear, ask **specific, focused questions** (not broad "what do you want?" questions).
+- When something is ambiguous but safe to assume, **state the assumption clearly** and proceed (do not block waiting for answers).
+
+## Tone
+
+- Be **encouraging and non-judgmental**. Treat all questions as valid, even if they seem basic.
+- Avoid sarcasm or language that suggests the question is obvious or trivial.
+

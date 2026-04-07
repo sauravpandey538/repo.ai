@@ -1,0 +1,36 @@
+---
+description: Product goal for repo.ai as an API that scaffolds and extends local Next.js projects
+alwaysApply: true
+---
+
+# Product Goal — API-First Next.js Assistant
+
+This rule captures the **main output** this project is aiming for, so all future changes and explanations stay aligned.
+
+## Core Goal
+
+- Treat repo.ai as a **backend API**, not a UI app (for now).
+- The primary interaction is:
+  - User calls an **HTTP endpoint** (for example from Postman).
+  - They pass a **folder path on their own machine**.
+  - repo.ai:
+    - Creates a **simple Next.js project** in that folder if it does not already exist, and
+    - Can later **add or modify features** in that Next.js project based on a natural language description.
+
+In short: “Given a local folder path, repo.ai is responsible for creating and growing a Next.js app there.”
+
+## Design Constraints
+
+- **No dedicated frontend for repo.ai** right now.
+  - Focus on clean, well-typed API endpoints that tools like Postman or cURL can call.
+- When adding features to the code:
+  - Prefer **Next.js conventions** (pages/routes/components) and **shadcn** components when a UI element is needed.
+  - Maintain strong **TypeScript types** for all API request/response shapes.
+
+## Implementation Guidance
+
+- When designing or modifying code:
+  - Think in terms of **endpoints** like `/scaffold-nextjs` and `/apply-feature`.
+  - Make sure file system writes are clearly scoped to the **target path** provided by the caller.
+  - Keep explanations and comments **beginner-friendly**, connecting behavior back to this core goal.
+
